@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  db2:
+    container_name: db2
+    image: store/ibmcorp/db2_developer_c:11.1.4.4-x86_64
+    ports:
+    - "50000:50000"
+    - "55000:55000"    
+    volumes:
+    - $PWD/data/db2:/database
+    environment:
+    - LICENSE=accept
+    - DB2INSTANCE=ctginst1
+    - DB2INST1_PASSWORD=ctginst1
+    - DBNAME=maxdb76
+    - TZ=Asia/Taipei
+    - BLU=false
+    - ENABLE_ORACLE_COMPATIBILITY=false
+    - UPDATEAVAIL=NO
+    - TO_CREATE_SAMPLEDB=false
+    - REPODB=true
+    - IS_OSXFS=false
+    - PERSISTENT_HOME=true
+    - HADR_ENABLED=false
+#   network_mode:  "host"
+# mac系統無法使用network host
+
